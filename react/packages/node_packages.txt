@@ -1,0 +1,6 @@
+@ionic/cli@7.0.1
+ionicons@7.1.0
+react@18.2.1
+react-scripts@5.0.1
+firebase-tools@11.26.0
+swiper@9.2.0
