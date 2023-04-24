@@ -1,5 +1,9 @@
 {
 	"window.restoreWindows": "none",
 	"workbench.colorTheme": "Dracula",
-	"latex-workshop.synctex.synctexjs.enabled": false
+	"latex-workshop.synctex.synctexjs.enabled": false,
+	"r.lsp.diagnostics": false,
+	"editor.rulers": [120, 160],
+	"editor.minimap.enabled": false,
+	"editor.fontFamily": "'Source Code Pro'"
 }
