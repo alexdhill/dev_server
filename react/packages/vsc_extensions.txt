@@ -1,5 +1,0 @@
-dracula-theme.theme-dracula
-usernamehw.errorlense
-christian-kohler.path-intellisense
-Github.copilot
-
