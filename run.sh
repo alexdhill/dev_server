@@ -1,21 +1,44 @@
-UID=$(id -u)
-GID=$(id -g)
-PORT=$1
-PROJDIR="$PWD"
+#!/bin/bash
 
-echo "Running VSCode from $(basename $PROJDIR) on port $PORT"
+usage()
+{
+    echo "dev [options]
 
-if [[ -z "$1" ]]
-    then
-        echo "No port specified - using port 8443"
-        PORT="8443"
-fi
+Valid options:
+-p <port number>
+-t <docker tag>"
+}
 
-docker run --rm -dp $PORT:8443 \
-    --name "$(basename "$PROJDIR")-vsc" \
-    -e PUID="$UID" \
-    -e GUID="$GID" \
-    -v "$PROJDIR":/workspace \
-    -e DEFAULT_WORKSPACE=/workspace \
-    -v ~/.gitconfig:/config/.gitconfig \
-    alexdhill/vscode:devel
+launch_container()
+{
+    local OPTIND
+    local port="8443"
+    local tag="latest"
+
+    while getopts ":p:t:" flag
+    do
+        case "$flag" in
+            p) port="$OPTARG" ;;
+            t) tag="$OPTARG" ;;
+            *) usage; exit(-1) ;;
+        esac
+    done
+    shift $(( OPTIND-1 ))
+
+    echo "Running VSCode ($tag) from $(basename $proj_dir) on port $port"
+
+    local proj_dir="$PWD"
+    if [[ -n "$1" ]]
+        then
+            proj_dir="$1"
+    fi
+
+    docker run --rm -dp $port:8443 \
+        --name "$(basename "$proj_dir")-vsc" \
+        -e PUID="$(id -u)" \
+        -e GUID="$(id -g)" \
+        -v "$proj_dir":/workspace \
+        -e DEFAULT_WORKSPACE=/workspace \
+        -v ~/.gitconfig:/config/.gitconfig \
+        alexdhill/vscode:devel
+}
