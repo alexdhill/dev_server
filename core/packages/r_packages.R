@@ -17,20 +17,3 @@ install.packages(c(
 	'patchwork',
 	'languageserver'
 ))
-
-install.packages("BiocManager", repos="https://cran.rstudio.com")
-BiocManager::install(update=TRUE, ask=FALSE)
-BiocManager::install(c(
-	'devtools',
-	'tximeta',
-	'summarizedExperiment',
-	'HDF5Array',
-	'DESeq2',
-	'ComplexHeatmap',
-	'survival',
-	'survminer',
-	'rGREAT',
-	'GenomicRanges',
-	'BSgenome.Hsapiens.UCSC.hg38',
-	'BSgenome'
-))
