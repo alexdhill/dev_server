@@ -14,7 +14,7 @@ LABEL name="alexdhill/vscode" \
 RUN echo "Installing Ubuntu libraries" && \
     apt-get update && \
     apt-get install -y \
-	git \
+	curl git \
 	python3 pip python3-venv \
 	r-base libxml2-dev libssl-dev libfontconfig1-dev \
 	texlive-latex-extra latexmk && \
